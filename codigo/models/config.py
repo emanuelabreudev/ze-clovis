@@ -12,10 +12,12 @@ class Config(models.Model):
     desconto = models.PositiveIntegerField(null=False, blank=False, default=30)
     vagas = models.PositiveIntegerField(null=False, blank=False)
 
-    def get_instance():
-        if not Config.objects.first():
-            Config(preco=10.00, vagas=50, desconto=30).save()
-        return Config.objects.first()
+    @classmethod
+    def get_instance(cls):
+        """Retorna a instância única de configuração (padrão Singleton)"""
+        if not cls.objects.first():
+            cls(preco=10.00, vagas=50, desconto=30).save()
+        return cls.objects.first()
     
     def __str__(self):
         return f'Configurações do Sistema'
