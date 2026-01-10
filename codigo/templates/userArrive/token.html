@@ -7,7 +7,7 @@
 <script>
     // Auto-redirect após 15 segundos
     setTimeout(function() {
-        window.location.href = "{% url 'codigo:user-arrive' %}";
+        globalThis.location.href = "{% url 'codigo:user-arrive' %}";
     }, 15000);
 </script>
 {% endblock head %}
