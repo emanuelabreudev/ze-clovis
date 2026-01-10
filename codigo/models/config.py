@@ -20,4 +20,4 @@ class Config(models.Model):
         return cls.objects.first()
     
     def __str__(self):
-        return f'Configurações do Sistema'
+        return 'Configurações do Sistema'

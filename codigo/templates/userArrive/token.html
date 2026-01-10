@@ -3,8 +3,13 @@
 {% load static %}
 
 {% block head %}
-<meta http-equiv="refresh" content="15; URL='{% url 'codigo:user-arrive' %}'" />
 <link rel="stylesheet" href="{% sass_src 'scss/userArrive/token.scss' %}">
+<script>
+    // Auto-redirect após 15 segundos
+    setTimeout(function() {
+        window.location.href = "{% url 'codigo:user-arrive' %}";
+    }, 15000);
+</script>
 {% endblock head %}
 
 {% block content %}

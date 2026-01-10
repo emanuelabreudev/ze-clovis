@@ -3,8 +3,13 @@
 {% load static %}
 
 {% block head %}
-<meta http-equiv="refresh" content="5; URL='{% url 'codigo:admin-log' %}'" />
 <link rel="stylesheet" href="{% sass_src 'scss/login/token-log.scss' %}">
+<script>
+    // Auto-refresh da página a cada 5 segundos
+    setTimeout(function() {
+        window.location.href = "{% url 'codigo:admin-log' %}";
+    }, 5000);
+</script>
 {% endblock head %}
 
 {% block content %}

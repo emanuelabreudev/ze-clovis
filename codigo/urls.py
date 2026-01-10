@@ -2,7 +2,18 @@
 Rotas de URL do sistema
 """
 from django.urls import path
-from codigo.views import *
+from codigo.views import (
+    AdminLogin,
+    AdminHome,
+    AdminSetup,
+    AdminUserRegister,
+    AdminLog,
+    UserArrive,
+    UserArriveLogin,
+    UserArriveToken,
+    UserDepart,
+    UserDepartPrice
+)
 
 app_name = 'codigo'
 
