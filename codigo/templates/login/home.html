@@ -4,72 +4,86 @@
 
 {% block head %}
 <link rel="stylesheet" href="{% sass_src 'scss/login/home.scss' %}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+    .card-button {
+        text-decoration: none;
+        padding: 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 15px;
+        transition: all 0.3s ease;
+    }
+    
+    .card-button.blue {
+        background-color: #93BCF2;
+    }
+    
+    .card-button.black {
+        background-color: black;
+    }
+    
+    .card-button:hover {
+        background-color: white !important;
+    }
+    
+    .card-button:hover .card-icon,
+    .card-button:hover .card-title {
+        color: #93BCF2 !important;
+    }
+    
+    .card-icon {
+        width: 64px;
+        height: 64px;
+        transition: color 0.3s ease;
+    }
+    
+    .card-title {
+        margin: 0;
+        font-size: 24px;
+        font-weight: 400;
+        font-family: 'Inter', sans-serif;
+        transition: color 0.3s ease;
+    }
+</style>
 {% endblock head %}
 
 {% block content %}
-<div class="container-home">
-    {% include 'utils/admin-header.html' %}
+<div class="container-home" style="background-color: #f5f5f5; min-height: 100vh; padding: 0; margin: 0; font-family: 'Inter', sans-serif; display: flex; flex-direction: column;">
+    <div style="width: 100%; height: 8px; background-color: #93BCF2;"></div>
+    
+    <div style="padding: 20px; display: flex; justify-content: space-between; align-items: center; background-color: #f5f5f5;">
+        <h1 style="margin: 0; font-size: 16px; font-weight: 700; color: black; font-family: 'Inter', sans-serif;">Zé Clovis - Estacionamento</h1>
+        <a href="/" style="background-color: #93BCF2; color: black; padding: 6px 12px; text-decoration: none; font-weight: 700; font-size: 12px; display: inline-block;">
+            ↖ SAIR
+        </a>
+    </div>
 
-    <div class="main">
-        <div class="main-home-container">
-            <div class="control-button">
-                <button>
-                    <a href="{% url 'codigo:admin-user-register' %}">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="192" height="192" fill="var(--white)"
-                            viewBox="0 0 256 256">
-                            <rect width="256" height="256" fill="none"></rect>
-                            <circle cx="128" cy="120" r="40" fill="none" stroke="var(--white)" stroke-linecap="round"
-                                stroke-linejoin="round" stroke-width="8"></circle>
-                            <path d="M63.8,199.4a72,72,0,0,1,128.4,0" fill="none" stroke="var(--white)"
-                                stroke-linecap="round" stroke-linejoin="round" stroke-width="8"></path>
-                            <line x1="176" y1="56" x2="224" y2="56" fill="none" stroke="var(--white)"
-                                stroke-linecap="round" stroke-linejoin="round" stroke-width="8"></line>
-                            <line x1="200" y1="32" x2="200" y2="80" fill="none" stroke="var(--white)"
-                                stroke-linecap="round" stroke-linejoin="round" stroke-width="8"></line>
-                            <path d="M222.8,112.9A93.3,93.3,0,0,1,224,128a96,96,0,1,1-96-96,93.3,93.3,0,0,1,15.1,1.2"
-                                fill="none" stroke="var(--white)" stroke-linecap="round" stroke-linejoin="round"
-                                stroke-width="8"></path>
-                        </svg>
-                    </a>
-                </button>
-                <p>Cadastrar Usuário</p>
-            </div>
+    <div style="flex: 1; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 0; padding: 0; margin: 0;">
+        
+        <a href="{% url 'codigo:admin-user-register' %}" class="card-button blue">
+            <i data-lucide="user-plus" class="card-icon" style="color: black;"></i>
+            <h2 class="card-title" style="color: black;">Novo Usuário</h2>
+        </a>
 
-            <div class="control-button">
-                <button>
-                    <a href="{% url 'codigo:admin-log' %}">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="192" height="192" fill="#f1e9e9" 
-                        viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect>
-                        <ellipse cx="128" cy="80" rx="88" ry="48" fill="none" stroke="#f1e9e9" 
-                        stroke-linecap="round" stroke-linejoin="round" stroke-width="8"></ellipse>
-                        <path d="M40,80v48c0,26.5,39.4,48,88,48s88-21.5,88-48V80" fill="none" stroke="#f1e9e9" 
-                        stroke-linecap="round" stroke-linejoin="round" stroke-width="8"></path>
-                        <path d="M40,128v48c0,26.5,39.4,48,88,48s88-21.5,88-48V128" fill="none" stroke="#f1e9e9" 
-                        stroke-linecap="round" stroke-linejoin="round" stroke-width="8"></path>
-                        </svg>
-                    </a>
-                </button>
-                <p>Registros</p>
-            </div>
+        <a href="{% url 'codigo:admin-log' %}" class="card-button black">
+            <i data-lucide="database" class="card-icon" style="color: white;"></i>
+            <h2 class="card-title" style="color: white;">Registros</h2>
+        </a>
 
-            <div class="control-button">
-                <button>
-                    <a href="{% url 'codigo:admin-config' %}">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="192" height="192" fill="var(--white)"
-                            viewBox="0 0 256 256">
-                            <rect width="256" height="256" fill="none"></rect>
-                            <circle cx="128" cy="128" r="48" fill="none" stroke="var(--white)" stroke-linecap="round"
-                                stroke-linejoin="round" stroke-width="8"></circle>
-                            <path
-                                d="M183.7,65.1q3.8,3.5,7.2,7.2l27.3,3.9a103.2,103.2,0,0,1,10.2,24.6l-16.6,22.1s.3,6.8,0,10.2l16.6,22.1a102.2,102.2,0,0,1-10.2,24.6l-27.3,3.9s-4.7,4.9-7.2,7.2l-3.9,27.3a103.2,103.2,0,0,1-24.6,10.2l-22.1-16.6a57.9,57.9,0,0,1-10.2,0l-22.1,16.6a102.2,102.2,0,0,1-24.6-10.2l-3.9-27.3q-3.7-3.5-7.2-7.2l-27.3-3.9a103.2,103.2,0,0,1-10.2-24.6l16.6-22.1s-.3-6.8,0-10.2L27.6,100.8A102.2,102.2,0,0,1,37.8,76.2l27.3-3.9q3.5-3.7,7.2-7.2l3.9-27.3a103.2,103.2,0,0,1,24.6-10.2l22.1,16.6a57.9,57.9,0,0,1,10.2,0l22.1-16.6a102.2,102.2,0,0,1,24.6,10.2Z"
-                                fill="none" stroke="var(--white)" stroke-linecap="round" stroke-linejoin="round"
-                                stroke-width="8"></path>
-                        </svg>
-                    </a>
-                </button>
-                <p>Configurações</p>
-            </div>
-        </div>
+        <a href="{% url 'codigo:admin-config' %}" class="card-button black" style="grid-column: 1 / -1;">
+            <i data-lucide="settings" class="card-icon" style="color: white;"></i>
+            <h2 class="card-title" style="color: white;">Configurações</h2>
+        </a>
     </div>
 </div>
+
+<script>
+    lucide.createIcons();
+</script>
 {% endblock content %}

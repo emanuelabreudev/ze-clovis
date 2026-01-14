@@ -4,8 +4,11 @@
 
 {% block head %}
 <link rel="stylesheet" href="{% sass_src 'scss/login/token-log.scss' %}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest"></script>
 <script>
-    // Auto-refresh da página a cada 5 segundos
     setTimeout(function() {
         globalThis.location.href = "{% url 'codigo:admin-log' %}";
     }, 5000);
@@ -13,33 +16,77 @@
 {% endblock head %}
 
 {% block content %}
-<div class="container-home">
-    {% include 'utils/admin-header.html' with back='codigo:admin-home' %}
-    <div class="main">
-        <table>
+<div class="container-home" style="background-color: #f5f5f5; min-height: 100vh; padding: 0; margin: 0; font-family: 'Inter', sans-serif; display: flex; flex-direction: column;">
+    <div style="width: 100%; height: 8px; background-color: #93BCF2;"></div>
+    
+    <div style="padding: 20px; display: flex; justify-content: space-between; align-items: center; background-color: #f5f5f5;">
+        <a href="{% url 'codigo:admin-home' %}" style="background-color: #93BCF2; color: black; padding: 6px 12px; text-decoration: none; font-weight: 700; font-size: 12px; display: inline-block;">
+            ↖ VOLTAR
+        </a>
+        <h1 style="margin: 0; font-size: 16px; font-weight: 700; color: black; font-family: 'Inter', sans-serif;">Zé Clovis - Estacionamento</h1>
+    </div>
+
+    <div style="padding: 20px; background-color: #f5f5f5;">
+        <h2 style="margin: 0 0 15px 0; font-size: 24px; font-weight: 700; color: black;">Registros</h2>
+        
+        <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+            <input type="text" placeholder="NOME" style="padding: 10px 15px; font-size: 14px; border: 2px solid #d0d0d0; background-color: white; font-family: 'Inter', sans-serif; flex: 1; min-width: 200px;">
+            
+            <button style="background-color: #93BCF2; color: black; padding: 10px 20px; border: none; font-size: 14px; font-weight: 700; font-family: 'Inter', sans-serif; cursor: pointer;">
+                Buscar
+            </button>
+            
+            <button style="background-color: #93BCF2; color: black; padding: 10px 20px; border: none; font-size: 14px; font-weight: 700; font-family: 'Inter', sans-serif; cursor: pointer; display: flex; align-items: center; gap: 5px;">
+                <i data-lucide="calendar" style="width: 16px; height: 16px;"></i>
+                Data
+            </button>
+            
+            <button style="background-color: #93BCF2; color: black; padding: 10px 20px; border: none; font-size: 14px; font-weight: 700; font-family: 'Inter', sans-serif; cursor: pointer; display: flex; align-items: center; gap: 5px;">
+                Status
+                <i data-lucide="chevron-down" style="width: 16px; height: 16px;"></i>
+            </button>
+            
+            <button style="background-color: #93BCF2; color: black; padding: 10px 20px; border: none; font-size: 14px; font-weight: 700; font-family: 'Inter', sans-serif; cursor: pointer; display: flex; align-items: center; gap: 5px;">
+                Valores
+                <i data-lucide="chevron-down" style="width: 16px; height: 16px;"></i>
+            </button>
+            
+            <button style="background-color: #93BCF2; color: black; padding: 10px 20px; border: none; font-size: 14px; font-weight: 700; font-family: 'Inter', sans-serif; cursor: pointer; display: flex; align-items: center; gap: 5px; margin-left: auto;">
+                <i data-lucide="file-text" style="width: 16px; height: 16px;"></i>
+                Relatório
+            </button>
+        </div>
+    </div>
+
+    <div style="flex: 1; overflow-x: auto; overflow-y: auto; padding: 0 20px 20px 20px;">
+        <table style="width: 100%; border-collapse: collapse; background-color: white; font-family: 'Inter', sans-serif;">
             <thead>
-                <tr>
-                    <th scope="col">FICHA</th>
-                    <th scope="col">PAGO/ESTACIONADO</th>
-                    <th scope="col">HORÁRIO ENTRADA</th>
-                    <th scope="col">HORÁRIO SAÍDA</th>
-                    <th scope="col">NOME</th>
-                    <th scope="col">PREÇO</th>
+                <tr style="background-color: black; color: white;">
+                    <th style="padding: 12px 16px; text-align: left; font-size: 13px; font-weight: 700; white-space: nowrap;">FICHA</th>
+                    <th style="padding: 12px 16px; text-align: left; font-size: 13px; font-weight: 700; white-space: nowrap;">Status</th>
+                    <th style="padding: 12px 16px; text-align: left; font-size: 13px; font-weight: 700; white-space: nowrap;">Horário de Entrada</th>
+                    <th style="padding: 12px 16px; text-align: left; font-size: 13px; font-weight: 700; white-space: nowrap;">Horário de Saída</th>
+                    <th style="padding: 12px 16px; text-align: left; font-size: 13px; font-weight: 700; white-space: nowrap;">Nome</th>
+                    <th style="padding: 12px 16px; text-align: left; font-size: 13px; font-weight: 700; white-space: nowrap;">Preço</th>
                 </tr>
             </thead>
             <tbody>
                 {% for item in estacionados %}
-                <tr>
-                    <td>{{item.id}}</td>
-                    <td>{% if item.pago %}PAGO{% else %}ESTACIONADO{%  endif %}</td>
-                    <td>{{item.horario_entrada|date:'d/m/y H:m'}}</td>
-                    <td>{% if item.horario_saida %}{{item.horario_saida|date:'d/m/y H:m'}}{% else %}-{% endif %}</td>
-                    <td>{% if item.usuario.nome %}{{item.usuario.nome}}{% else %}-{% endif %}</td>
-                    <td>{% if item.valor %}{{item.valor}}{% else %}-{% endif %}</td>
+                <tr style="border-bottom: 1px solid #e0e0e0;">
+                    <td style="padding: 12px 16px; font-size: 14px; color: black;">{{item.id}}</td>
+                    <td style="padding: 12px 16px; font-size: 14px; color: black;">{% if item.pago %}Pago{% else %}Estacionado{%  endif %}</td>
+                    <td style="padding: 12px 16px; font-size: 14px; color: black;">{{item.horario_entrada|date:'d/m/Y à\s H:i'}}</td>
+                    <td style="padding: 12px 16px; font-size: 14px; color: black;">{% if item.horario_saida %}{{item.horario_saida|date:'d/m/Y à\s H:i'}}{% else %}--{% endif %}</td>
+                    <td style="padding: 12px 16px; font-size: 14px; color: black;">{% if item.usuario.nome %}{{item.usuario.nome}}{% else %}Comum{% endif %}</td>
+                    <td style="padding: 12px 16px; font-size: 14px; color: black;">{% if item.valor %}R$ {{item.valor}}{% else %}--{% endif %}</td>
                 </tr>
-            {% endfor %}
+                {% endfor %}
             </tbody>
         </table>
     </div>
 </div>
+
+<script>
+    lucide.createIcons();
+</script>
 {% endblock content %}
