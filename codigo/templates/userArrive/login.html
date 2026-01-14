@@ -4,21 +4,39 @@
 
 {% block head %}
 <link rel="stylesheet" href="{% sass_src 'scss/userArrive/login.scss' %}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
 {% endblock head %}
 
 {% block content %}
-<div class="container">
-    {% include 'utils/sidebar.html' with mensagem="informe seus dados" %}
-    <div class="main">
-        <div>
-            <form action="" method="post">
-                <h2>Informe seu CPF</h2>
-                {% csrf_token %}
-                <input type="text" name="cpf" placeholder="cpf">
+<div class="container" style="background-color: black; min-height: 100vh; padding: 0; margin: 0; font-family: 'Inter', sans-serif; display: flex; flex-direction: column;">
+    <div style="width: 100%; height: 8px; background-color: #FFC700;"></div>
+    
+    <div style="padding: 20px;">
+        <a href="{% url 'codigo:user-arrive' %}" style="background-color: #FFC700; color: black; padding: 8px 16px; text-decoration: none; font-weight: 700; font-size: 14px; display: inline-block;">
+            ↖ VOLTAR
+        </a>
+    </div>
 
-                <button class="btn-primary" type="submit">confirmar</button>
-            </form>
-        </div>
+    <div style="background-color: #1a1a1a; padding: 40px 60px; margin: 20px; position: relative; display: flex; align-items: center;">
+        <h1 style="margin: 0; font-size: 48px; font-weight: 900; color: white; font-family: 'Inter', sans-serif;">Informe seu CPF</h1>
+        <div style="position: absolute; right: 60px; top: 50%; transform: translateY(-50%); font-size: 80px; font-weight: 900; color: white;">↓</div>
+    </div>
+
+    <div style="padding: 0 20px; flex: 1; display: flex; flex-direction: column;">
+        <form action="" method="post" style="display: flex; flex-direction: column; flex: 1;">
+            {% csrf_token %}
+            
+            <div style="margin: 20px 0; flex: 1;">
+                <input type="text" name="cpf" placeholder="CPF" 
+                    style="width: 100%; padding: 20px 30px; font-size: 20px; background-color: transparent; border: 2px solid #4a4a4a; color: #6a6a6a; font-family: 'Inter', sans-serif; font-weight: 400; box-sizing: border-box;">
+            </div>
+
+            <button type="submit" style="width: 100%; padding: 25px; background-color: #FFC700; color: black; border: none; font-size: 28px; font-weight: 900; font-family: 'Inter', sans-serif; cursor: pointer; margin-bottom: 20px;">
+                Confirmar
+            </button>
+        </form>
     </div>
 </div>
 {% endblock content %}
