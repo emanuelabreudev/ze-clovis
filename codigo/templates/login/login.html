@@ -17,7 +17,7 @@
 
     <div style="width: 98%; position: absolute; left: 50%; transform: translateX(-50%); top: 30px; display: flex; justify-content: space-between; align-items: center; padding: 10px 0px; box-sizing: border-box;">
         <h1 style="margin: 0; font-size: 18px; font-weight: bold; color: black; font-family: 'Inter', sans-serif;">Zé Clovis - Estacionamento</h1>
-        <a href="{% url 'codigo:user-arrive' %}" style="background-color: #93BCF2; color: black; border: none; padding: 8px 16px; cursor: pointer; font-size: 14px; font-weight: 500; text-decoration: none; display: inline-block; font-family: 'Inter', sans-serif;">
+        <a href="{% url 'codigo:home' %}" style="background-color: #93BCF2; color: black; border: none; padding: 8px 16px; cursor: pointer; font-size: 14px; font-weight: 500; text-decoration: none; display: inline-block; font-family: 'Inter', sans-serif;">
             ↖ VOLTAR PARA PRINCIPAL
         </a>
     </div>    
@@ -33,13 +33,13 @@
                 style="margin-top: -30px; width: 80%; border: 1px solid #A5A5A8; border-radius: 0px; background-color: transparent;"
                 name="password" type="password" placeholder="Senha">
 
-            <button style="width: 80%; border-radius: 0px; background-color: #93BCF2; color: black; font-size: small;">
+            <button type="submit" style="width: 80%; border-radius: 0px; background-color: #93BCF2; color: black; font-size: small;">
                 Entrar
             </button>
-            <button
-                style="margin-top: -30px; width: 80%; border-radius: 0px; background-color: black; color: white; font-size: small;">
+            <a href="{% url 'codigo:password-reset-request' %}"
+                style="margin-top: -30px; width: 80%; border-radius: 0px; background-color: black; color: white; font-size: small; display: flex; align-items: center; justify-content: center; padding: 12px; text-decoration: none; cursor: pointer; border: none;">
                 Esqueceu a senha?
-            </button>
+            </a>
         </form>
     </div>
 </div>

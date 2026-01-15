@@ -1,0 +1,33 @@
+{% extends 'utils/base.html' %}
+{% load sass_tags %}
+{% load static %}
+
+{% block head %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+{% endblock head %}
+
+{% block content %}
+<div style="background-color: black; min-height: 100vh; padding: 0; margin: 0; font-family: 'Inter', sans-serif; display: flex; flex-direction: column;">
+    <div style="width: 100%; height: 8px; background-color: #FFC700;"></div>
+    
+    <div style="padding: 20px; text-align: right;">
+        <a href="{% url 'codigo:admin-login' %}" style="background-color: #FFC700; color: black; padding: 10px 20px; text-decoration: none; font-weight: 700; font-size: 14px; display: inline-block;">
+            Admin →
+        </a>
+    </div>
+
+    <div style="flex: 1; display: flex; flex-direction: column; gap: 20px; padding: 0 20px 20px 20px;">
+        <a href="{% url 'codigo:user-arrive' %}" style="text-decoration: none; display: block; background-color: #6EFF5C; padding: 80px 60px; position: relative; flex: 1; display: flex; align-items: center; justify-content: space-between;">
+            <h1 style="margin: 0; font-size: 96px; font-weight: 900; color: black; font-family: 'Inter', sans-serif;">Entrada</h1>
+            <div style="font-size: 120px; font-weight: 900; color: black;">↗</div>
+        </a>
+
+        <a href="{% url 'codigo:user-depart' %}" style="text-decoration: none; display: block; background-color: #FFC700; padding: 80px 60px; position: relative; flex: 1; display: flex; align-items: center; justify-content: space-between;">
+            <h1 style="margin: 0; font-size: 96px; font-weight: 900; color: black; font-family: 'Inter', sans-serif;">Saída</h1>
+            <div style="font-size: 120px; font-weight: 900; color: black;">↗</div>
+        </a>
+    </div>
+</div>
+{% endblock content %}
