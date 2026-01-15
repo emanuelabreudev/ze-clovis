@@ -10,26 +10,135 @@
 {% endblock head %}
 
 {% block content %}
-<div class="container" style="background-color: black; min-height: 100vh; padding: 0; margin: 0; font-family: 'Inter', sans-serif; display: flex; flex-direction: column;">
-    <div style="width: 100%; height: 8px; background-color: #FFC700;"></div>
+<div class="container"
+     style="
+        background-color: black;
+        min-height: 100vh;
+        padding: 0;
+        margin: 0;
+        font-family: 'Inter', sans-serif;
+        display: flex;
+        flex-direction: column;
+     ">
+
     
+    <div style="width: 100%; height: 8px; background-color: #FFC700;"></div>
+
+   
     <div style="padding: 20px;">
-        <a href="{% url 'codigo:home' %}" style="background-color: #FFC700; color: black; padding: 10px 20px; text-decoration: none; font-weight: 700; font-size: 16px; display: inline-block;">
-            ↖ VOLTAR PARA PRINCIPAL (mudar)
+        <a href="{% url 'codigo:home' %}"
+           style="
+                background-color: #FFC700;
+                color: black;
+                padding: 10px 20px;
+                text-decoration: none;
+                font-weight: 700;
+                font-size: 16px;
+                display: inline-block;
+           ">
+            ↖ VOLTAR PARA PRINCIPAL
         </a>
     </div>
 
-    <div style="display: flex; flex-direction: column; flex: 1; padding: 0 20px 20px 20px; gap: 20px;">
-        <a href="{% url 'codigo:user-login' %}" style="text-decoration: none; display: block; background-color: #6EFF5C; padding: 60px 40px; position: relative; flex: 1;">
-            <p style="margin: 0 0 10px 0; font-size: 18px; font-weight: 400; color: black;">Desconto de 15%</p>
-            <h1 style="margin: 0; font-size: 72px; font-weight: 900; color: black; font-family: 'Inter', sans-serif;">Cliente Cadastrado</h1>
-            <div style="position: absolute; right: 40px; top: 50%; transform: translateY(-50%); font-size: 120px; font-weight: 900; color: black;">↗</div>
+    <!-- Cards -->
+    <div style="
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            padding: 0 20px 20px 20px;
+            gap: 20px;
+        ">
+
+        
+        <a href="{% url 'codigo:user-login' %}"
+           style="
+                text-decoration: none;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                background-color: #6EFF5C;
+                padding: 60px 40px;
+                position: relative;
+                flex: 1;
+           ">
+            <p style="
+                    margin: 0 0 10px 0;
+                    font-size: 18px;
+                    font-weight: 400;
+                    color: black;
+               ">
+                Desconto de 15%
+            </p>
+
+            <h1 style="
+                    margin: 0;
+                    font-size: 72px;
+                    font-weight: 900;
+                    color: black;
+               ">
+                Cliente Cadastrado
+            </h1>
+
+            <div style="
+                    position: absolute;
+                    right: 40px;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    font-size: 120px;
+                    font-weight: 900;
+                    color: black;
+               ">
+                ↗
+            </div>
         </a>
 
-        <a href="{% url 'codigo:user-token' %}" style="text-decoration: none; display: block; background-color: #FFC700; padding: 60px 40px; position: relative; flex: 1;">
-            <h1 style="margin: 0; font-size: 72px; font-weight: 900; color: black; font-family: 'Inter', sans-serif;">Cliente Comum</h1>
-            <div style="position: absolute; right: 40px; top: 50%; transform: translateY(-50%); font-size: 120px; font-weight: 900; color: black;">↗</div>
-        </a>
+        <!-- Cliente Comum (POST) -->
+        <form method="post"
+              action="{% url 'codigo:user-arrive' %}"
+              style="
+                    flex: 1;
+                    display: block;
+              ">
+            {% csrf_token %}
+
+            <button type="submit"
+                    style="
+                        all: unset;
+                        cursor: pointer;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        background-color: #FFC700;
+                        padding: 60px 40px;
+                        position: relative;
+                        width: 100%;
+                        height: 100%;
+                        box-sizing: border-box;
+                    ">
+
+                <h1 style="
+                        margin: 0;
+                        font-size: 72px;
+                        font-weight: 900;
+                        color: black;
+                   ">
+                    Cliente Comum
+                </h1>
+
+                <div style="
+                        position: absolute;
+                        right: 40px;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        font-size: 120px;
+                        font-weight: 900;
+                        color: black;
+                   ">
+                    ↗
+                </div>
+            </button>
+        </form>
+
     </div>
 </div>
 {% endblock content %}
